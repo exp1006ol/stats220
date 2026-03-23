@@ -2,14 +2,12 @@
 title: My dynamic report
 output: html_fragment
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 suppressPackageStartupMessages(library(tidyverse))
 
 data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTOZXdRndVIMRFYRqo8GkBCNW7yI7HZZ6r9SLRqIbG6Vpckg6bPxORzv-T2z-U8qNPkOcWny-kBTqye/pub?gid=751192119&single=true&output=csv")
 
-#rename variables to make it easier to use
 latest_data <- data |>
   rename(
     timestamp = "Timestamp",
@@ -17,16 +15,13 @@ latest_data <- data |>
     scroll_time = "Q2: On average, in minutes, how often do you scroll reels?",
     change_feed = "Q3: Is there anything you wish you could change about your feed?"
   ) |>
-  #using mutate so that i can make another bar chart, as i dont have enough variables / columns, and the other one i made isnt good
   mutate(scroll_category = case_when(
     scroll_time < 10 ~ "Less than 10 mins",
     scroll_time < 30 ~ "10 to 30 mins",
     scroll_time < 60 ~ "30 to 60 mins",
     scroll_time >= 60 ~ "More than 60 mins"
   ))
-
 ```
-
 ```{css}
 body {
   font-family: sans-serif;
