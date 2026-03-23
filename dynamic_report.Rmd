@@ -43,7 +43,7 @@ body {
 
 This report studies how peoples interactions with their instagram feeds, and how they feel about the content they consume, with relation to what that content is and how long they spend roughly scrolling on the app.
 
-A total of `r nrow(latest_data)` responses were collected. The average time spent scrolling reels was `r round(mean(latest_data$scroll_time), 1)` minutes.
+A total of `r nrow(data)` responses were collected. The average time spent scrolling reels was `r round(mean(data$scroll_time), 1)` minutes.
 
 ```
 {r}
