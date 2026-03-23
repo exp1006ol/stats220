@@ -1,9 +1,13 @@
 ---
+
 title: My dynamic report
 output: html_fragment
+
 ---
 
-```{r setup, include=FALSE}
+```
+
+{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 suppressPackageStartupMessages(library(tidyverse))
 
@@ -22,6 +26,7 @@ latest_data <- data |>
     scroll_time < 60 ~ "30 to 60 mins",
     scroll_time >= 60 ~ "More than 60 mins"
   ))
+
 ```
 
 ```{css}
@@ -31,6 +36,7 @@ body {
   margin: auto;
   padding: 20px;
 }
+
 ```
 
 ## What's going on on people's Instagram feeds?
@@ -39,7 +45,8 @@ This report studies how peoples interactions with their instagram feeds, and how
 
 A total of `r nrow(latest_data)` responses were collected. The average time spent scrolling reels was `r round(mean(latest_data$scroll_time), 1)` minutes.
 
-```{r}
+```
+{r}
 ggplot(latest_data, aes(x = content_type, fill = content_type)) +
   geom_bar() +
   labs(
@@ -51,9 +58,11 @@ ggplot(latest_data, aes(x = content_type, fill = content_type)) +
     legend.position = "none",
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
 ```
 
-```{r}
+```
+{r}
 ggplot(latest_data, aes(x = scroll_category)) +
   geom_bar(fill = "steelblue") +
   labs(
@@ -62,4 +71,5 @@ ggplot(latest_data, aes(x = scroll_category)) +
     y = "Number of respondents"
   ) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 ```
