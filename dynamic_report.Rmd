@@ -22,10 +22,9 @@ latest_data <- data |>
     scroll_time < 60 ~ "30 to 60 mins",
     scroll_time >= 60 ~ "More than 60 mins"
   ))
+```
 
-```
-```
-{css}
+```{css}
 body {
   font-family: sans-serif;
   max-width: 800px;
@@ -39,6 +38,7 @@ body {
 This report studies how peoples interactions with their instagram feeds, and how they feel about the content they consume, with relation to what that content is and how long they spend roughly scrolling on the app.
 
 A total of `r nrow(latest_data)` responses were collected. The average time spent scrolling reels was `r round(mean(latest_data$scroll_time), 1)` minutes.
+
 ```{r}
 ggplot(latest_data, aes(x = content_type, fill = content_type)) +
   geom_bar() +
@@ -52,6 +52,7 @@ ggplot(latest_data, aes(x = content_type, fill = content_type)) +
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 ```
+
 ```{r}
 ggplot(latest_data, aes(x = scroll_category)) +
   geom_bar(fill = "steelblue") +
