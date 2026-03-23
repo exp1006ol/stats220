@@ -13,13 +13,13 @@ suppressPackageStartupMessages(library(tidyverse))
 
 data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTOZXdRndVIMRFYRqo8GkBCNW7yI7HZZ6r9SLRqIbG6Vpckg6bPxORzv-T2z-U8qNPkOcWny-kBTqye/pub?gid=751192119&single=true&output=csv")
 
-latest_data <- data |>
+latest_data <- data %>%
   rename(
     timestamp = "Timestamp",
     content_type = "Q1: What type of content appears on your feed?",
     scroll_time = "Q2: On average, in minutes, how often do you scroll reels?",
     change_feed = "Q3: Is there anything you wish you could change about your feed?"
-  ) |>
+  ) %>%
   mutate(scroll_category = case_when(
     scroll_time < 10 ~ "Less than 10 mins",
     scroll_time < 30 ~ "10 to 30 mins",
