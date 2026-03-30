@@ -13,7 +13,7 @@ latest_data <- data |>
   rename(
     timestamp = "Timestamp",
     content_type = "Q1: What type of content appears on your feed?",
-    scroll_time = "Q2: On average, in minutes, how often do you scroll reels?",
+    scroll_time = "Q2: On average, in minutes, how often do you scroll reels a day?",
     change_feed = "Q3: Is there anything you wish you could change about your feed?"
   ) |>
   mutate(scroll_category = case_when(
